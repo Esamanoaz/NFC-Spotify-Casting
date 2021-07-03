@@ -1,0 +1,49 @@
+Verson 1.6.2
+* Updated .gitignore
+* Updated README.md
+* Cleaned up comments
+* Took out sensitive data in constants.py
+
+Version 1.6.1
+* Increased the reliability of isSameSongPlaying
+* Minor code format changes
+
+Version 1.6
++ Added podcast support
+* Wrapped isSameSongPlaying with try except
+
+Version 1.5.1
++ Added a startup bash file
+
+Version 1.5
++ Shuffle determined by playlist or album
+- Removed library mode
+* Cleaned up the code
+
+Version 1.4.4
+* Bug fixes
+
+Version 1.4.3
++ Can play playlists now
+
+Version 1.4.2
+- No longer lowercase tag reads
+  * This has fixed so many issues!
+  * Now we can use the `album_tracks()` function
+
+Version 1.4.1
++ Library mode
+  * Helps to get data needed to add albums/playlists to the library
+  * Library mode now also produces a 404 error on windows 10
++ New arguments
+* Documentation
+* Grammar
+
+Version 1.4
++ Now plays albums through a library lookup function
++ Displays a success message in the console (including the ablum played and the songs in the album)
++ Added the library (library.py)
+* `album_tracks()` now produces a 404 error on raspberry pi
+
+Version 1.3
++ Now plays albums by looking up the songs in the album using the `album_tracks()` function
