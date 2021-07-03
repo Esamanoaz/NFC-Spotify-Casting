@@ -6,10 +6,10 @@
 ## Materials needed
 * A Raspberry Pi with a connection to the internet.
 * Python 3.6 or greater installed on the Raspberry pi.
-* An NFC reader. I used the ACR122U (not sponsored).
+* An NFC reader. I used the ACR122U.
 * NFC tag stickers. I used the NTAG215 stickers.
 * Something to put the NFC tag stickers onto (album art).
-* Software to write the URIs to the NFC tags. I used the free NFC tools app on Android (not sponsored).
+* Software to write the URIs to the NFC tags. I used the free NFC tools app on Android.
 
 ## Instructions
 1. Download this repository onto the Raspberry Pi. You can do this using git clone in a command line or going to the repo page and clicking code -> download zip -> and then extract the files to your desktop.
