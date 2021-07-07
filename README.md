@@ -6,6 +6,8 @@
 ## Materials needed
 * A Raspberry Pi with a connection to the internet.
 * Python 3.6 or greater installed on the Raspberry pi.
+* A Google Assistant enabled speaker or Chromecast device.
+* A premium Spotify account.
 * An NFC reader. I used the ACR122U.
 * NFC tag stickers. I used the NTAG215 stickers.
 * Something to put the NFC tag stickers onto (album art).
