@@ -21,8 +21,14 @@
     2. `spotipy`
 5. Write Spotify URIs to NFC tags and apply them to whatever you chose, like album art. Spotify URIs can be found in the Spotify desktop app by right clicking the three dots next to an album, playlist, or show -> click share -> hold down the alt key on Windows or command key on Mac -> click the newly shown Copy Spotify URI button.
 6. Set the file `startup.sh` to an executable. You can do this by typing `sudo chmod +x pathto/filename` in the terminal.
-7. The Spotify app usually needs to be open on the cast device before running the program. If it has Google assitant just say `Hey Google, play music on Spotify.` 
+7. The Spotify app usually needs to be open on the device before running the program to be shown in the devices list.
 8. Type `./startup.sh` into the Raspberry Pi terminal.
 9. Type `y` if you want debugging enabled or `n` if you don't.
 10. Select which device you would like to use by entering its number.
 11. Touch a tag to the NFC reader and take it off the reader after a second or two. Enjoy!
+
+The first time you run the program and after any update you will need to log in. Doing so is a very simple process.
+
+1. First, run the program with `./startup.sh`
+2. Enable debugging by typing `y` and hit enter.
+3. Read the instructions printed to the console or [watch this video](https://youtu.be/6LAAJBBGU4c) for more help.

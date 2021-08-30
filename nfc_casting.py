@@ -118,7 +118,7 @@ devices = devices_available['devices']
 for i, device in enumerate(devices):
     print(f'{i} -> Name: {device["name"]}, \nFull device info: {device}\n')
 
-device_choice = input('Enter the number of the device you want to use: ')
+device_choice = int(input('Enter the number of the device you want to use: '))
 spotify_device_id = devices[device_choice]['id']
 
 #Set up NFC reader
@@ -161,7 +161,7 @@ def get_record(tag_data):
                                     shuffle(album_tracks)
                                 client.start_playback(device_id=spotify_device_id, uris=album_tracks, offset={'position': 0})
                                 n()
-                                print(f'Succesfully started playback of \n{album_tracks}')
+                                print(f'Succesfully started playback of album \nAlbum tracks: {album_tracks}')
                             else:
                                 print('The album is already playing.')
                         elif find(nfc_data, 'playlist'):
@@ -172,13 +172,13 @@ def get_record(tag_data):
                                     shuffle(playlist_tracks)
                                 client.start_playback(device_id=spotify_device_id, uris=playlist_tracks, offset={'position': 0})
                                 n()
-                                print(f'Succesfully started playback of playlist\n{playlist_tracks}')
+                                print(f'Succesfully started playback of playlist \nPlaylist tracks: {playlist_tracks}')
                             else:
                                 print('The playlist is already playing.')
                         elif find(nfc_data, 'show'):
                             client.start_playback(device_id=spotify_device_id, context_uri=nfc_data)
                             n()
-                            print(f'Succesfully started playback of podcast\n{nfc_data}')
+                            print(f'Succesfully started playback of podcast \nPodcast: {nfc_data}')
                     except Exception as err:
                         reader.close()
                         n()

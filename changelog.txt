@@ -1,3 +1,7 @@
+Version 1.7.2
+* Minor changes to UI
+* Fixed an error with selecting a device
+
 Version 1.7.1
 * Now works with any Spotify device, not just chromecasts!
 * Way less effort required to setup the program now
