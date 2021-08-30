@@ -1,3 +1,8 @@
+Version 1.7.1
+* Now works with any Spotify device, not just chromecasts!
+* Way less effort required to setup the program now
+- Removed all pychromecast functionality
+
 Version 1.7
 * Fixed timeout error
 + Ask user which device they would like to use when setting up

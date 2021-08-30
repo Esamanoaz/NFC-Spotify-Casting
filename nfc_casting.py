@@ -1,5 +1,5 @@
 '''
-Handles connecting to a chromecast device and playing music on the device via Spotify
+Handles connecting to any Spotify device and playing music
 '''
 
 import argparse
@@ -10,17 +10,11 @@ import os
 import nfc
 from random import shuffle
 
-import pychromecast
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 
 import constants
 
-CAST_NAME = constants.CAST_NAME
-CAST_IP = constants.CAST_IP
-
-SP_DC = constants.SP_DC
-SP_KEY = constants.SP_KEY
 CLIENT_ID = constants.CLIENT_ID
 CLIENT_SECRET = constants.CLIENT_SECRET
 SPOTIPY_REDIRECT_URI = constants.REDIRECT_URI
@@ -30,10 +24,8 @@ ALLOW_EXPLICIT = constants.ALLOW_EXPLICIT
 SHUFFLE_DEFAULT = constants.SHUFFLE_DEFAULT
 PLAYLISTS_SHUFFLE = constants.PLAYLIST_SHUFFLE
 
-parser = argparse.ArgumentParser(description="Cast songs/albums to Google Home via nfc controls")
+parser = argparse.ArgumentParser(description="Control Spotify playback with NFC tags")
 parser.add_argument("--show-debug", help="Enable debug log", action="store_true")
-parser.add_argument("--cast", help='Name of cast device (default: "%(default)s")', default=CAST_NAME)
-parser.add_argument("--cast-ip", help='IP address of cast device (default: "%(default)s")', default=CAST_IP)
 args = parser.parse_args()
 
 if args.show_debug:
@@ -106,39 +98,6 @@ def construct_uris(dictionary, t):
         for item in items:
             tracks.append(item.get('track').get('uri'))
     return tracks
-
-
-chromecasts, browser  = pychromecast.get_listed_chromecasts(friendly_names=[args.cast])
-home = None
-for _cast in chromecasts:
-    if _cast.name == args.cast:
-        home = _cast
-        break
-
-if not home:
-    print('No chromecast with name "{}" discovered'.format(args.cast))
-    print("Discovered casts: {}".format(chromecasts))
-    print("Attempting to connect to cast device via IP")
-    n()
-    home = pychromecast.Chromecast(args.cast_ip)
-
-    if not home:
-        print("Failure. Exiting.")
-        sys.exit(1)
-    else:
-        print("Success!")
-        n()
-
-print("cast {}".format(home))
-
-home.wait() # Start a new worker thread/wait for connection
-
-# Log device and status
-n()
-print(home.device)
-n()
-print(home.status)
-n()
 
 spotify_device_id = None
 
@@ -241,6 +200,3 @@ def get_record(tag_data):
 # Start playback
 while True:
     reader.connect(rdwr={'on-connect': get_record, 'beep-on-connect': constants.BEEP})
-
-# Shut down discovery
-pychromecast.discovery.stop_discovery(browser)

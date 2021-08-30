@@ -1,13 +1,5 @@
 # Edit this file
 
-#cookies
-'''
-Follow the instructions at https://github.com/enriquegh/spotify-webplayer-token
-to get the below cookies
-'''
-SP_DC = 'replace this string with the SP_DC cookie'
-SP_KEY = 'replace this string with the SP_KEY cookie'
-
 #Spotify app
 '''
 CLIENT_ID and CLIENT_SECRET can be created by making a new app on https://developer.spotify.com/
@@ -23,16 +15,6 @@ REDIRECT_URI = 'http://localhost:8888/callback/'
 Your normal Spotify account username. The account should be premium, not free.
 '''
 USERNAME = 'replace this with your Spotify account username'
-
-#chromecast
-'''
-CAST_NAME: The name of your chromecast device.
-CAST_IP: The IP address of your device.
-If the device can not be found with the name, it will try again with the IP.
-You can find the IP address and name in the Google Home app.
-'''
-CAST_NAME = 'replace this with the cast name. For example: Bedroom Speaker'
-CAST_IP = 'replace this with the cast IP address'
 
 #nfc settings
 '''
@@ -68,5 +50,5 @@ The program could stop working and ask to log back in if SCOPE is changed.
 '''
 SCOPE = 'user-library-read user-read-currently-playing user-read-playback-state user-modify-playback-state playlist-modify-private'
 
-VERSION = '1.7'
+VERSION = '1.7.1'
 UPDATE_DATE = '8/29/2021'
