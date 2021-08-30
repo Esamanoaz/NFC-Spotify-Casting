@@ -68,5 +68,5 @@ The program could stop working and ask to log back in if SCOPE is changed.
 '''
 SCOPE = 'user-library-read user-read-currently-playing user-read-playback-state user-modify-playback-state playlist-modify-private'
 
-VERSION = '1.6.2'
-UPDATE_DATE = '7/3/2021'
+VERSION = '1.7'
+UPDATE_DATE = '8/29/2021'

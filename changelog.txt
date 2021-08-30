@@ -1,3 +1,9 @@
+Version 1.7
+* Fixed timeout error
++ Ask user which device they would like to use when setting up
+- Removed SpotifyController from pychromecast because it was causing the timeout error
+- Removed spotify_token
+
 Verson 1.6.2
 * Updated .gitignore
 * Updated README.md

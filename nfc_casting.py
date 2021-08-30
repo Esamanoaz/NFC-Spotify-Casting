@@ -11,8 +11,6 @@ import nfc
 from random import shuffle
 
 import pychromecast
-from pychromecast.controllers.spotify import SpotifyController
-import spotify_token as st
 import spotipy
 from spotipy.oauth2 import SpotifyOAuth
 
@@ -147,45 +145,22 @@ spotify_device_id = None
 # Create a spotify client
 _scope = constants.SCOPE
 
-# Create a spotify token
-data = st.start_session(SP_DC, SP_KEY)
-access_token = data[0]
-expires = data[1] - int(time.time())
 #auth=access_token, 
 client = spotipy.Spotify(auth_manager=SpotifyOAuth(client_id=CLIENT_ID, client_secret=CLIENT_SECRET, scope=_scope, redirect_uri=SPOTIPY_REDIRECT_URI, username=SPOTIFY_USERNAME))
 if args.show_debug:
     spotipy.trace = True
     spotipy.trace_out = True
 
-#Launch the spotify app on the home
-sp = SpotifyController(access_token, expires)
-home.register_handler(sp)
-sp.launch_app()
-
-n()
-print(home.status)
-n()
-
-if not sp.is_launched and not sp.credential_error:
-    print("Failed to launch spotify controller due to timeout")
-    sys.exit(1)
-if not sp.is_launched and sp.credential_error:
-    print("Failed to launch spotify controller due to credential error")
-    sys.exit(1)
-
 # Query spotify for active devices
 devices_available = client.devices()
 
-# Match active spotify devices with the spotify controller's device id
-for device in devices_available["devices"]:
-    if device["id"] == sp.device:
-        spotify_device_id = device["id"]
-        break
+# Get a list of available Spotify devices and ask the user which one to use
+devices = devices_available['devices']
+for i, device in enumerate(devices):
+    print(f'{i} -> Name: {device["name"]}, \nFull device info: {device}\n')
 
-if not spotify_device_id:
-    print('No device with id "{}" known by Spotify'.format(sp.device))
-    print('Known devices: {}'.format(devices_available['devices']))
-    sys.exit(1)
+device_choice = input('Enter the number of the device you want to use: ')
+spotify_device_id = devices[device_choice]['id']
 
 #Set up NFC reader
 try:
